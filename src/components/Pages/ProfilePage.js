@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Button, Card, Container, Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import TokenContext from "../Context/TokenContext";
@@ -33,8 +33,34 @@ const context=useContext(TokenContext);
       const data=await res.json();
       alert(data.error.message)
   }
+
    }
 
+   useEffect(()=>{
+   async function fetchData(){ 
+    const response=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{
+    method:'POST',
+    body:JSON.stringify(
+        {
+            idToken:context.token
+        }
+    )
+  })
+  if(response.ok){
+    const dataa= await response.json();
+    console.log(dataa)
+    console.log(dataa.users[0].displayName)
+    
+    nameRef.current.value=dataa.users[0].displayName;
+   urlRef.current.value=dataa.users[0].photoUrl;
+
+  }
+  else{
+    const dataa=await response.json();
+    alert(dataa.error.message)
+  }}
+  fetchData();
+   },[])
 
 
 
@@ -63,11 +89,11 @@ const context=useContext(TokenContext);
             <Form onSubmit={submitHandler}>
                 <FormGroup className={styles.input} >
                     <FormLabel>Full Name:</FormLabel>
-                    <FormControl type="text" ref={nameRef}/>
+                    <FormControl type="text" ref={nameRef} name='name'/>
                 </FormGroup>
                 <FormGroup className={styles.input}>
                     <FormLabel>Profile Photo URL</FormLabel>
-                    <FormControl type="url" ref={urlRef}/>
+                    <FormControl type="url" ref={urlRef} name='url' />
                 </FormGroup>
                 <Button className={styles.button} variant='light' type="submit">Update</Button> 
             </Form>
