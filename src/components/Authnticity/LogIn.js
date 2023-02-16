@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from 'react'
 import { Button, Card, Container, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import TokenContext from '../Context/TokenContext';
 import styles from './Login.module.css'
 
@@ -53,7 +53,7 @@ return (
                     <FormLabel htmlFor='password'>Password</FormLabel>
                     <FormControl type='password' id='password' ref={passwordRef} required/>
                 </FormGroup>
-            
+                  <Link to='/password' style={{textDecoration:'none'}}>Forgot Password?</Link><br/>
                 <Button type='submit'>LogIn</Button><br/>
                 
             </Form>

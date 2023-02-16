@@ -6,6 +6,7 @@ import Welcome from "./components/Pages/Welcome";
 import TokenContextProvider from "./components/Context/TokenContextProvider";
 import ProfilePage from "./components/Pages/ProfilePage";
 import Varification from "./components/Pages/VerificationPage";
+import Password from "./components/Pages/Password";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/varify">
             <Varification />
+          </Route>
+          <Route path='/password'>
+            <Password/>
           </Route>
         </Switch>
       </TokenContextProvider>
