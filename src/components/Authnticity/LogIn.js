@@ -1,15 +1,16 @@
 import React, { useRef } from 'react'
 import { Button, Card, Container, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css'
 
 const LogIn=()=>{
 const mailRef=useRef();
 const passwordRef=useRef();
-
+ const history = useHistory();
 
 async function submitHandler(e){
 e.preventDefault();
-const obj={mail:mailRef.current.value,password:passwordRef}
+
 const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{
     method:'POST',
     body:JSON.stringify({
@@ -23,10 +24,11 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
  
     if(res.ok){
       const data= await res.json();
-      // console.log(data.email);
+      console.log(data.email);
+      console.log(data.idToken)
     //   context.addToken(data.idToken)
-    //   context.addmail(data.email)
-    //   history.replace('/product')
+      
+      history.replace('/welcome')
     }
     else{
         const data=await res.json();

@@ -12,7 +12,7 @@ const history=useHistory()
 
 async function submitHandler(e){
 e.preventDefault();
-const obj={mail:mailRef.current.value,password:passwordRef}
+
 
 const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{
     method:'POST',
@@ -28,7 +28,7 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp
  
     if(res.ok){
       const data= await res.json();
-      // console.log(data.email);
+      console.log(data.email);
     //   context.addToken(data.idToken)
     //   context.addmail(data.email)
     //   history.replace('/product')
