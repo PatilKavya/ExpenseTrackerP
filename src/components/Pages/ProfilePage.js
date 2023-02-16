@@ -84,7 +84,7 @@ const context=useContext(TokenContext);
         <Container>
         <Card className={styles.section}>
         <h3>Contact Details</h3>
-        <Button variant='light' className={styles.button1}>Cancel</Button>
+        <button variant='light' className={styles.button1}>Cancel</button>
             <Form onSubmit={submitHandler}>
                 <FormGroup className={styles.input} >
                     <FormLabel>Full Name:</FormLabel>
@@ -94,7 +94,7 @@ const context=useContext(TokenContext);
                     <FormLabel>Profile Photo URL</FormLabel>
                     <FormControl type="url" ref={urlRef} name='url' />
                 </FormGroup>
-                <Button className={styles.button} variant='light' type="submit">Update</Button> 
+                <button className={styles.button} variant='light' type="submit">Update</button> 
             </Form>
         </Card>
         </Container>
