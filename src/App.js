@@ -7,6 +7,7 @@ import TokenContextProvider from "./components/Context/TokenContextProvider";
 import ProfilePage from "./components/Pages/ProfilePage";
 import Varification from "./components/Pages/VerificationPage";
 import Password from "./components/Pages/Password";
+import Expenses from "./components/Expense/Expenses";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path='/password'>
             <Password/>
+          </Route>
+          <Route path='/expense'>
+            <Expenses/>
           </Route>
         </Switch>
       </TokenContextProvider>

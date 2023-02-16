@@ -34,7 +34,7 @@ const Varification = () => {
 
   return (
     <>
-    <Container>
+    <Container style={{marginTop:'10rem'}}>
       <Button onClick={mailVarifyHandler} variant='secondary'>Varify Email</Button>
       {mail && (<h6>Link is sent to your email, check and verify</h6>)}
       </Container>

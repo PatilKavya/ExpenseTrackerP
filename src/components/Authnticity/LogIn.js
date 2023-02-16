@@ -54,8 +54,8 @@ return (
                     <FormControl type='password' id='password' ref={passwordRef} required/>
                 </FormGroup>
                   <Link to='/password' style={{textDecoration:'none'}}>Forgot Password?</Link><br/>
-                <Button type='submit'>LogIn</Button><br/>
-                
+                <Button type='submit'  className={styles.button} variant='secondary'>LogIn</Button><br/>
+                <Link to='/signUp'><Button className={styles.button1} variant='info'>Create Account</Button></Link>
             </Form>
         </Card>
     </Container>
