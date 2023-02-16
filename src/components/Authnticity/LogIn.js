@@ -30,7 +30,7 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
       console.log(data.idToken)
        context.addToken(data.idToken)
       
-      history.replace('/welcome')
+      history.replace('/varify')
     }
     else{
         const data=await res.json();

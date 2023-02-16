@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Welcome from "./components/Pages/Welcome";
 import TokenContextProvider from "./components/Context/TokenContextProvider";
 import ProfilePage from "./components/Pages/ProfilePage";
+import Varification from "./components/Pages/VerificationPage";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/profile">
             <ProfilePage />
+          </Route>
+          <Route path="/varify">
+            <Varification />
           </Route>
         </Switch>
       </TokenContextProvider>
