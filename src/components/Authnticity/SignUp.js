@@ -65,7 +65,7 @@ return (
                     <FormControl type='password' id='confirmPassword' ref={confirmPasswordRef} required onChange={changeHandler}/>
                 </FormGroup>
                 <Button type='submit' className={styles.button} style={{visibility:pass ? 'visible':'hidden'}}>SignUp</Button><br/><hr/>
-                <Link to='/logIn'><Button className={styles.button}>Have account?,LogIn</Button></Link>
+                <Link to='/logIn'><Button className={styles.button1}>Have account?,LogIn</Button></Link>
             </Form>
         </Card>
     </Container>

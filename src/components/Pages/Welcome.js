@@ -1,4 +1,6 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Welcome=()=>{
 
@@ -6,7 +8,13 @@ const Welcome=()=>{
 
     return(
         <>
-        <h2>Welcome to to the Expense Tracker page </h2>
+        <header>
+            <div>
+            <span style={{textAlign:'start',fontSize:'1.25rem'}}>Welcome to the Expense Tracker page! </span>
+            <span style={{marginLeft:'60rem',backgroundColor:'lightGrey'}}>Your Profile is Incomplete.<Link to='/profile' style={{color:'blue',textDecoration:'none'}}>Complete Now</Link></span>
+            </div><hr/>
+        </header>
+        
         </>
     )
 }

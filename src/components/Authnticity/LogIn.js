@@ -1,11 +1,13 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Button, Card, Container, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import TokenContext from '../Context/TokenContext';
 import styles from './Login.module.css'
 
 const LogIn=()=>{
 const mailRef=useRef();
 const passwordRef=useRef();
+const context=useContext(TokenContext);
  const history = useHistory();
 
 async function submitHandler(e){
@@ -26,7 +28,7 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
       const data= await res.json();
       console.log(data.email);
       console.log(data.idToken)
-    //   context.addToken(data.idToken)
+       context.addToken(data.idToken)
       
       history.replace('/welcome')
     }
