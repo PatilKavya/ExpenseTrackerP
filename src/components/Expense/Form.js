@@ -1,16 +1,26 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
-import styles from './Form.module.css'
+import styles from './Form.module.css';
+import axios from "axios";
 
 const ExpenseForm = (props) => {
 const amountRef=useRef()
 const detailsRef=useRef()
 const catagoryRef=useRef()
 
-const submitHandler=(e)=>{
+const submitHandler=async(e)=>{
 e.preventDefault();
 const obj={amount:amountRef.current.value,description:detailsRef.current.value,catagory:catagoryRef.current.value}
-props.object(obj)
+props.object(obj);
+try {const res=await axios.post('https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses.json',obj)
+if(res.ok){
+ const data=await res.json();
+  console.log(data)
+}} catch(error){
+  console.log(error)
+}
+
+
 }
 
   return (

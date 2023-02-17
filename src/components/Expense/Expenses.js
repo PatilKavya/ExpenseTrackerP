@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import {  Card, Container } from "react-bootstrap";
 import ExpenseForm from "./Form";
 import styles from './Expenses.module.css';
+import axios from "axios";
 
 const Expenses = () => {
 const[state,setState]=useState([]);
@@ -11,6 +12,23 @@ const[state,setState]=useState([]);
      setState([...state,item])
   }
 
+  useEffect(()=>{
+    async function fetchData(){
+    try { const res=await axios.get('https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses.json')
+    const arr=Object.keys(res.data);
+console.log(arr); 
+let updatedSet=arr.map(key=>{
+  return res.data[key]
+})
+console.log(updatedSet)
+ setState(updatedSet)
+    }catch(error){
+      console.log(error)
+    }}
+    fetchData();
+  },[])
+
+
   return (
     <>
       <Container>
@@ -18,7 +36,7 @@ const[state,setState]=useState([]);
           <ExpenseForm object={expenseHandler}/>
           <ul>
             {state.map(e=>{
-              return (<li className={styles.expense}>{e.amount}-{e.description}-{e.catagory}</li>)
+              return (<li className={styles.expense} key={Math.random().toString()}>{e.amount}-{e.description}-{e.catagory}</li>)
             })}
           </ul>
         </Card>
