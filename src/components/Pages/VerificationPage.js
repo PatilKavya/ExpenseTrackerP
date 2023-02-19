@@ -1,9 +1,9 @@
-import React, { useContext,useState } from "react";
+import React, {useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import TokenContext from "../Context/TokenContext";
+import { useSelector } from "react-redux";
 
 const Varification = () => {
-  const context = useContext(TokenContext);
+  const token=useSelector(state=>state.token.token)
   const [mail,setMail]=useState(false)
 
   const mailVarifyHandler = async () => {
@@ -15,7 +15,7 @@ const Varification = () => {
           method: "POST",
           body: JSON.stringify({
             requestType: "VERIFY_EMAIL",
-            idToken: context.token,
+            idToken: token,
           }),
           headers: {
             "Content-Type": "application/json"
@@ -34,7 +34,7 @@ const Varification = () => {
 
   return (
     <>
-    <Container style={{marginTop:'10rem'}}>
+    <Container>
       <Button onClick={mailVarifyHandler} variant='secondary'>Varify Email</Button>
       {mail && (<h6>Link is sent to your email, check and verify</h6>)}
       </Container>

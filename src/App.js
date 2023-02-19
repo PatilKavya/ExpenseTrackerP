@@ -3,43 +3,45 @@ import SignUp from "./components/Authnticity/SignUp";
 import LogIn from "./components/Authnticity/LogIn";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Welcome from "./components/Pages/Welcome";
-import TokenContextProvider from "./components/Context/TokenContextProvider";
 import ProfilePage from "./components/Pages/ProfilePage";
 import Varification from "./components/Pages/VerificationPage";
 import Password from "./components/Pages/Password";
 import Expenses from "./components/Expense/Expenses";
+import { useSelector } from "react-redux";
 
 function App() {
+
+ let auth=localStorage.getItem('token')!==''? true : false;
+ console.log(auth)
   return (
     <>
-      <TokenContextProvider>
+     
         <Switch>
           <Route path="/" exact>
             <Redirect to="/signUp" />
           </Route>
-          <Route path="/logIn">
+        <Route path="/logIn">
             <LogIn />
           </Route>
-          <Route path="/signUp">
+        { auth&& <Route path="/signUp">
             <SignUp />
-          </Route>
-          <Route path="/welcome">
+          </Route>}
+        { auth&&  <Route path="/welcome">
             <Welcome />
-          </Route>
-          <Route path="/profile">
+          </Route>}
+        { auth&&<Route path="/profile">
             <ProfilePage />
-          </Route>
-          <Route path="/varify">
+          </Route>}
+        {/* { auth&&<Route path="/varify">
             <Varification />
-          </Route>
-          <Route path='/password'>
+          </Route>} */}
+       {  auth&&  <Route path='/password'>
             <Password/>
-          </Route>
-          <Route path='/expense'>
+          </Route>}
+         { auth&& <Route path='/expense'>
             <Expenses/>
-          </Route>
+          </Route>}
         </Switch>
-      </TokenContextProvider>
     </>
   );
 }

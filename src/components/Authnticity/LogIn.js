@@ -1,13 +1,15 @@
-import React, { useContext, useRef } from 'react'
+import React, {  useEffect, useRef } from 'react'
 import { Button, Card, Container, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import TokenContext from '../Context/TokenContext';
 import styles from './Login.module.css'
+import { useDispatch } from 'react-redux';
+import { tokenAction } from '../../store/login';
 
 const LogIn=()=>{
+   const dispatch= useDispatch()
 const mailRef=useRef();
 const passwordRef=useRef();
-const context=useContext(TokenContext);
+
  const history = useHistory();
 
 async function submitHandler(e){
@@ -26,11 +28,13 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
  
     if(res.ok){
       const data= await res.json();
-      console.log(data.email);
-      console.log(data.idToken)
-       context.addToken(data.idToken)
-      
-      history.replace('/varify')
+    //   console.log(data.email);
+    //   console.log(data.idToken)
+    //    context.addToken(data.idToken)
+    localStorage.setItem('token',data.idToken) 
+    dispatch(tokenAction.logIn(localStorage.getItem('token'))) 
+    
+      history.replace('/expense')
     }
     else{
         const data=await res.json();
@@ -38,6 +42,9 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
     }
 }
 
+// useEffect(()=>{
+//     dispatch(tokenAction.logIn(localStorage.getItem('token'))) 
+// },[])
 
 return (
     <>

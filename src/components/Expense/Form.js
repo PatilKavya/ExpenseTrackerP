@@ -2,8 +2,11 @@ import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import styles from './Form.module.css';
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { expenseActions } from "../../store/expense";
 
 const ExpenseForm = (props) => {
+  const dispatch=useDispatch()
 const amountRef=useRef()
 const detailsRef=useRef()
 const catagoryRef=useRef()
@@ -11,7 +14,7 @@ const catagoryRef=useRef()
 const submitHandler=async(e)=>{
 e.preventDefault();
 const obj={amount:amountRef.current.value,description:detailsRef.current.value,catagory:catagoryRef.current.value}
-props.object(obj);
+dispatch(expenseActions.add(obj))
 try {const res=await axios.post('https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses.json',obj)
 if(res.ok){
  const data=await res.json();

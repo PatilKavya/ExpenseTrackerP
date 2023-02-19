@@ -1,20 +1,21 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, {  useEffect, useRef } from "react";
 import { Button, Card, Container, Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import TokenContext from "../Context/TokenContext";
+import { useSelector } from "react-redux";
 import styles from './ProfilePage.module.css'
 
 const ProfilePage = () => {
+  const token=useSelector(state=>state.token.token)
 const nameRef=useRef();
 const urlRef=useRef();
-const context=useContext(TokenContext);
+
 
    const submitHandler= async (e)=>{
     e.preventDefault();
    const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{ 
      method:'POST',
    body:JSON.stringify({
-       idToken:context.token,
+       idToken:token,
        displayName:nameRef.current.value,
        photoUrl:urlRef.current.value,
        returnSecureToken:true,
@@ -42,7 +43,7 @@ const context=useContext(TokenContext);
     method:'POST',
     body:JSON.stringify(
         {
-            idToken:context.token
+            idToken:token
         }
     )
   })

@@ -1,5 +1,7 @@
 .section{
-    margin: 6rem;
+    margin-top: 3rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
     text-align : center;
     align-items: center;
 }
