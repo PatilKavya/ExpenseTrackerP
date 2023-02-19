@@ -2,10 +2,12 @@ import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import styles from './Form.module.css';
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { expenseActions } from "../../store/expense";
 
 const ExpenseForm = (props) => {
+  const theme=useSelector(state=>state.theme.darkTheme)
+
   const dispatch=useDispatch()
 const amountRef=useRef()
 const detailsRef=useRef()
@@ -28,7 +30,7 @@ if(res.ok){
 
   return (
     <>
-      <Form onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler} className={theme? styles.dark:styles.light}>
         <Form.Group className={styles.input}>
           <Form.Label>Amount:</Form.Label>
           <Form.Control type="number" ref={amountRef} />

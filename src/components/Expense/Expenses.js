@@ -9,14 +9,17 @@ import { expenseActions } from "../../store/expense";
 import Varification from "../Pages/VerificationPage";
 import { tokenAction } from "../../store/login";
 import { useHistory } from "react-router-dom";
+import { themeActions } from "../../store";
 
 const Expenses = () => {
+  const theme = useSelector((state) => state.theme.darkTheme);
+  const themeButton=useSelector(state=>state.theme.premium)
   const history = useHistory();
   const dispatch = useDispatch();
   const items = useSelector((state) => state.expense.expense);
-  const amount=items.reduce((curr,item)=>{
-    return curr+Number(item.amount);
-  },0)
+  const amount = items.reduce((curr, item) => {
+    return curr + Number(item.amount);
+  }, 0);
 
   useEffect(() => {
     async function fetchData() {
@@ -44,33 +47,46 @@ const Expenses = () => {
     history.replace("/logIn");
   };
 
+  const themeHandler = () => {
+    dispatch(themeActions.onclick());
+  };
+
   return (
     <>
       <header>
-        <br/>
-        <div style={{float:'right'}}>
-        <Varification />
+        <br />
+        <div style={{ float: "right" }}>
+          <Varification />
         </div>
+       { themeButton&&<Button variant="warning" style={{ margin: "3rem" }}  onClick={themeHandler}>
+          theme
+        </Button>}
         <Button onClick={logOutHandler}>LogOut</Button>
       </header>
       <main>
-        <Container>
+        <Container className={theme ? styles.dark : styles.light }>
           <Card className={styles.section}>
             <ExpenseForm />
-            <h3>Total amount:{amount}</h3>
-            {amount>10000 && <Button variant="info">Activate premium features</Button>}
-            <ul>
-              {items.map((e) => {
-                return (
-                  <li className={styles.expense} key={Math.random().toString()}>
-                    {e.amount}-{e.description}-{e.catagory}{" "}
-                    <DeleteExpense item={e} /> <button>Edit</button>
-                  </li>
-                );
-              })}
-            </ul>
           </Card>
         </Container>
+        <div className={styles.container}>
+          <h3>Total amount:{amount}</h3>
+          {amount > 10000 && (
+            <Button variant="info" onClick={()=>{dispatch(themeActions.premium())}}>
+              Activate premium features
+            </Button>
+          )}
+          <ul>
+            {items.map((e) => {
+              return (
+                <li className={styles.expense} key={Math.random().toString()}>
+                  {e.amount}-{e.description}-{e.catagory}{" "}
+                  <DeleteExpense item={e} /> <button>Edit</button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </main>
     </>
   );
