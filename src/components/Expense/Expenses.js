@@ -51,6 +51,15 @@ const Expenses = () => {
     dispatch(themeActions.onclick());
   };
 
+  // function makeCSV(rows){
+  //   return rows.map(r=>r.amount.join(',')).join('\n')
+  // }
+  // const content=<a id='a' download='file.csv'>Download Expense</a>
+  // const a=document.getElementById('a');
+  // const blob=new Blob([makeCSV(items)])
+  // console.log(blob)
+  // a.href=URL.createObjectURL(blob);
+
   return (
     <>
       <header>
@@ -75,7 +84,7 @@ const Expenses = () => {
             <Button variant="info" onClick={()=>{dispatch(themeActions.premium())}}>
               Activate premium features
             </Button>
-          )}
+          )}      
           <ul>
             {items.map((e) => {
               return (
