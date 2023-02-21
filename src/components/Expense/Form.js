@@ -8,10 +8,18 @@ import { expenseActions } from "../../store/expense";
 const ExpenseForm = (props) => {
   const theme=useSelector(state=>state.theme.darkTheme)
 
+  const item=useSelector(state=>state.expense.item)
+  const edit=useSelector(state=>state.expense.edit)
   const dispatch=useDispatch()
 const amountRef=useRef()
 const detailsRef=useRef()
 const catagoryRef=useRef()
+
+if(edit){
+  amountRef.current.value=item.amount;
+  detailsRef.current.value=item.description;
+  catagoryRef.current.value=item.catagory;
+}
 
 const submitHandler=async(e)=>{
 e.preventDefault();
@@ -24,7 +32,7 @@ if(res.ok){
 }} catch(error){
   console.log(error)
 }
-
+dispatch(expenseActions.back());
 
 }
 
@@ -33,13 +41,13 @@ if(res.ok){
       <Form onSubmit={submitHandler} className={theme? styles.dark:styles.light}>
         <Form.Group className={styles.input}>
           <Form.Label>Amount:</Form.Label>
-          <Form.Control type="number" ref={amountRef} />
+          <Form.Control type="number" ref={amountRef} name='amount' />
         </Form.Group>
         <Form.Group className={styles.input}>
           <Form.Label>Description:</Form.Label>
-          <Form.Control type="text" ref={detailsRef} />
+          <Form.Control type="text" ref={detailsRef} name='details'/>
         </Form.Group>
-        <Form.Group className={styles.input}>
+        <Form.Group className={styles.input} name='category'>
           <Form.Label>Catagory</Form.Label>
           <Form.Select ref={catagoryRef}>
             <option>Food</option>

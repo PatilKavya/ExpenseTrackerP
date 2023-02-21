@@ -10,6 +10,7 @@ import Varification from "../Pages/VerificationPage";
 import { tokenAction } from "../../store/login";
 import { useHistory } from "react-router-dom";
 import { themeActions } from "../../store";
+import EditExpense from "./EditExpense";
 
 const Expenses = () => {
   const theme = useSelector((state) => state.theme.darkTheme);
@@ -90,7 +91,7 @@ const Expenses = () => {
               return (
                 <li className={styles.expense} key={Math.random().toString()}>
                   {e.amount}-{e.description}-{e.catagory}{" "}
-                  <DeleteExpense item={e} /> <button>Edit</button>
+                  <DeleteExpense item={e} /> <EditExpense item={e}/>
                 </li>
               );
             })}
