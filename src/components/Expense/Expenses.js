@@ -21,12 +21,13 @@ const Expenses = () => {
   const amount = items.reduce((curr, item) => {
     return curr + Number(item.amount);
   }, 0);
+  let mail=localStorage.getItem('mail')
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          "https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses.json"
+          `https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses/${mail}.json`
         );
         const arr = Object.keys(res.data);
         console.log(arr);
@@ -44,6 +45,8 @@ const Expenses = () => {
   }, []);
 
   const logOutHandler = () => {
+    localStorage.setItem('token','');
+    localStorage.setItem('mail','')
     dispatch(tokenAction.logOut());
     history.replace("/logIn");
   };
@@ -52,14 +55,6 @@ const Expenses = () => {
     dispatch(themeActions.onclick());
   };
 
-  // function makeCSV(rows){
-  //   return rows.map(r=>r.amount.join(',')).join('\n')
-  // }
-  // const content=<a id='a' download='file.csv'>Download Expense</a>
-  // const a=document.getElementById('a');
-  // const blob=new Blob([makeCSV(items)])
-  // console.log(blob)
-  // a.href=URL.createObjectURL(blob);
 
   return (
     <>

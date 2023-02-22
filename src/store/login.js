@@ -10,13 +10,13 @@ const tokenSlice=createSlice({
         logIn(state,action){
             state.isLoggedIn=true;
             state.token=action.payload;
-
             
         },
         logOut(state) {
-          localStorage.setItem('token','') 
+            state.isLoggedIn=false;
             state.token='';
-        }}
+        }
+    }
 })
 
 

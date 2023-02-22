@@ -8,12 +8,13 @@ const DeleteExpense = (props) => {
 const dispatch=useDispatch()
 const item=props.item;
   console.log(item)
+  let mail=localStorage.getItem('mail');
 
   
   const deleteHandler = async () => {
     try {
       const res = await axios.delete(
-        `https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses/${item.key}.json`
+        `https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses/${mail}/${item.key}.json`
       );
       console.log(res.data);
     } catch (error) {

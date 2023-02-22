@@ -33,6 +33,10 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
     //    context.addToken(data.idToken)
     localStorage.setItem('token',data.idToken) 
     dispatch(tokenAction.logIn(localStorage.getItem('token'))) 
+    const mail=data.email;
+    let a=mail.replace('@','');
+    let b=a.replace('.','');
+    localStorage.setItem('mail',b);
     
       history.replace('/expense')
     }

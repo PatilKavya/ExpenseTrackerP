@@ -14,6 +14,7 @@ const ExpenseForm = (props) => {
 const amountRef=useRef()
 const detailsRef=useRef()
 const catagoryRef=useRef()
+let mail=localStorage.getItem('mail');
 
 if(edit){
   amountRef.current.value=item.amount;
@@ -25,7 +26,7 @@ const submitHandler=async(e)=>{
 e.preventDefault();
 const obj={amount:amountRef.current.value,description:detailsRef.current.value,catagory:catagoryRef.current.value}
 dispatch(expenseActions.add(obj))
-try {const res=await axios.post('https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses.json',obj)
+try {const res=await axios.post(`https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses/${mail}.json`,obj)
 if(res.ok){
  const data=await res.json();
   console.log(data)
