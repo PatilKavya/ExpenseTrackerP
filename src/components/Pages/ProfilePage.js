@@ -12,7 +12,7 @@ const urlRef=useRef();
 
    const submitHandler= async (e)=>{
     e.preventDefault();
-   const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{ 
+   const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyC4RU6TNNl20tludmX4qvSjb3R98k7ZEKQ',{ 
      method:'POST',
    body:JSON.stringify({
        idToken:token,
@@ -39,7 +39,7 @@ const urlRef=useRef();
 
    useEffect(()=>{
    async function fetchData(){ 
-    const response=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{
+    const response=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyC4RU6TNNl20tludmX4qvSjb3R98k7ZEKQ',{
     method:'POST',
     body:JSON.stringify(
         {

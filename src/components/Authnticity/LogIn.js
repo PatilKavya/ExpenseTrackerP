@@ -15,7 +15,7 @@ const passwordRef=useRef();
 async function submitHandler(e){
 e.preventDefault();
 
-const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{
+const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC4RU6TNNl20tludmX4qvSjb3R98k7ZEKQ',{
     method:'POST',
     body:JSON.stringify({
         email:mailRef.current.value,

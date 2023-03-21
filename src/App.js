@@ -25,18 +25,18 @@ function App() {
         <Route path="/logIn">
             <LogIn />
           </Route>
-        { auth&& <Route path="/signUp">
+         <Route path="/signUp">
             <SignUp />
-          </Route>}
+          </Route>
         { auth&&  <Route path="/welcome">
             <Welcome />
           </Route>}
         { auth&&<Route path="/profile">
             <ProfilePage />
           </Route>}
-        {/* { auth&&<Route path="/varify">
+        {auth&&<Route path="/varify">
             <Varification />
-          </Route>} */}
+          </Route>} 
        {  auth&&  <Route path='/password'>
             <Password/>
           </Route>}

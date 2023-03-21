@@ -12,7 +12,7 @@ const submitHandler=async (e)=>{
 e.preventDefault();
 setState(true)
 try{
-const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48',{
+const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyC4RU6TNNl20tludmX4qvSjb3R98k7ZEKQ',{
     method:'POST',
     body:JSON.stringify({
         requestType:"PASSWORD_RESET",

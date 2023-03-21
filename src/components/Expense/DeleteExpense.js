@@ -14,7 +14,7 @@ const item=props.item;
   const deleteHandler = async () => {
     try {
       const res = await axios.delete(
-        `https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses/${mail}/${item.key}.json`
+        `https://expencetracker-b2498-default-rtdb.firebaseio.com/expenses/${mail}/${item.key}.json`
       );
       console.log(res.data);
     } catch (error) {

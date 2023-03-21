@@ -7,10 +7,10 @@ const Varification = () => {
   const [mail,setMail]=useState(false)
 
   const mailVarifyHandler = async () => {
-
+    setMail(true);
   try  {
       let res = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCsrrZtiK7noLGBRqsN-7Z4fLuJFuP1m48",
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyC4RU6TNNl20tludmX4qvSjb3R98k7ZEKQ",
         {
           method: "POST",
           body: JSON.stringify({
@@ -24,7 +24,7 @@ const Varification = () => {
         if(res.ok){
             const data= await res.json();
             console.log(data)
-          setMail(true);
+            setMail(false);
         }
      }catch(error){
         console.log(error)

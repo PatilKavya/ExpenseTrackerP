@@ -11,6 +11,7 @@ import { tokenAction } from "../../store/login";
 import { useHistory } from "react-router-dom";
 import { themeActions } from "../../store";
 import EditExpense from "./EditExpense";
+import { Link } from "react-router-dom";
 
 const Expenses = () => {
   const theme = useSelector((state) => state.theme.darkTheme);
@@ -27,7 +28,7 @@ const Expenses = () => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `https://expensetracker-14e41-default-rtdb.firebaseio.com/expenses/${mail}.json`
+          `https://expencetracker-b2498-default-rtdb.firebaseio.com/expenses/${mail}.json`
         );
         const arr = Object.keys(res.data);
         console.log(arr);
@@ -61,7 +62,7 @@ const Expenses = () => {
       <header>
         <br />
         <div style={{ float: "right" }}>
-          <Varification />
+          <Link to='/varify'><Button variant="secondary"> Varify Mail</Button></Link>
         </div>
        { themeButton&&<Button variant="warning" style={{ margin: "3rem" }}  onClick={themeHandler}>
           theme
