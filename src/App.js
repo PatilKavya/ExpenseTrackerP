@@ -19,28 +19,28 @@ function App() {
     <div className={theme ? styles.dark : styles.light} >
      
         <Switch>
-          <Route path="/" exact>
-            <Redirect to="/signUp" />
+          <Route path="https://PatilKavya.github.io/ExpenseTrackerP/" exact>
+            <Redirect to="https://PatilKavya.github.io/ExpenseTrackerP/signUp" />
           </Route>
-        <Route path="/logIn">
+        <Route path="https://PatilKavya.github.io/ExpenseTrackerP/logIn">
             <LogIn />
           </Route>
-         <Route path="/signUp">
+         <Route path="https://PatilKavya.github.io/ExpenseTrackerP/signUp">
             <SignUp />
           </Route>
-        { auth&&  <Route path="/welcome">
+        { auth&&  <Route path="https://PatilKavya.github.io/ExpenseTrackerP/welcome">
             <Welcome />
           </Route>}
-        { auth&&<Route path="/profile">
+        { auth&&<Route path="https://PatilKavya.github.io/ExpenseTrackerP/profile">
             <ProfilePage />
           </Route>}
-        {auth&&<Route path="/varify">
+        {auth&&<Route path="https://PatilKavya.github.io/ExpenseTrackerP/varify">
             <Varification />
           </Route>} 
-       {  auth&&  <Route path='/password'>
+       {  auth&&  <Route path='https://PatilKavya.github.io/ExpenseTrackerP/password'>
             <Password/>
           </Route>}
-         { auth&& <Route path='/expense'>
+         { auth&& <Route path='https://PatilKavya.github.io/ExpenseTrackerP/expense'>
             <Expenses/>
           </Route>}
         </Switch>

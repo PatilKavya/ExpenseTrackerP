@@ -32,7 +32,7 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp
     //   context.addToken(data.idToken)
     //   context.addmail(data.email)
     //   history.replace('/product')
-    history.replace('/logIn')
+    history.replace('https://PatilKavya.github.io/ExpenseTrackerP/logIn')
     }
     else{
         const data=await res.json();
@@ -65,7 +65,7 @@ return (
                     <FormControl type='password' id='confirmPassword' ref={confirmPasswordRef} required onChange={changeHandler}/>
                 </FormGroup>
                 <Button type='submit' className={styles.button} style={{visibility:pass ? 'visible':'hidden'}}>SignUp</Button><br/><hr/>
-                <Link to='/logIn'><Button className={styles.button1}>Have account?,LogIn</Button></Link>
+                <Link to='https://PatilKavya.github.io/ExpenseTrackerP/logIn'><Button className={styles.button1}>Have account?,LogIn</Button></Link>
             </Form>
         </Card>
     </Container>
