@@ -46,7 +46,7 @@ console.log(error)
                    {state&& <h4>Loading...</h4>}<br/>
                     <Button type='submit' >Send Link</Button>
                 </Form><br/>
-                <Link to='/logIn' style={{textDecoration:'none'}}>Already a user? LogIn</Link>
+                <Link to='/ExpenseTrackerP/logIn' style={{textDecoration:'none'}}>Already a user? LogIn</Link>
             </Card>
         </Container>
         </>

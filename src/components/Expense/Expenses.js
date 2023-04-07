@@ -62,7 +62,7 @@ const Expenses = () => {
       <header>
         <br />
         <div style={{ float: "right" }}>
-          <Link to='https://PatilKavya.github.io/ExpenseTrackerP/varify'><Button variant="secondary"> Varify Mail</Button></Link>
+          <Link to='/ExpenseTrackerP/varify'><Button variant="secondary"> Varify Mail</Button></Link>
         </div>
        { themeButton&&<Button variant="warning" style={{ margin: "3rem" }}  onClick={themeHandler}>
           theme

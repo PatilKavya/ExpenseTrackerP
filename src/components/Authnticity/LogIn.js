@@ -38,7 +38,7 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
     let b=a.replace('.','');
     localStorage.setItem('mail',b);
     
-      history.replace('https://PatilKavya.github.io/ExpenseTrackerP/expense')
+      history.replace('/ExpenseTrackerP/expense')
     }
     else{
         const data=await res.json();
@@ -64,9 +64,9 @@ return (
                     <FormLabel htmlFor='password'>Password</FormLabel>
                     <FormControl type='password' id='password' ref={passwordRef} required/>
                 </FormGroup>
-                  <Link to='https://PatilKavya.github.io/ExpenseTrackerP/password' style={{textDecoration:'none'}}>Forgot Password?</Link><br/>
+                  <Link to='/ExpenseTrackerP/password' style={{textDecoration:'none'}}>Forgot Password?</Link><br/>
                 <Button type='submit'  className={styles.button} variant='secondary'>LogIn</Button><br/>
-                <Link to='https://PatilKavya.github.io/ExpenseTrackerP/signUp'><Button className={styles.button1} variant='info'>Create Account</Button></Link>
+                <Link to='/ExpenseTrackerP/signUp'><Button className={styles.button1} variant='info'>Create Account</Button></Link>
             </Form>
         </Card>
     </Container>

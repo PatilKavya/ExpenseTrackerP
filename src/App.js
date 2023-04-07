@@ -19,28 +19,28 @@ function App() {
     <div className={theme ? styles.dark : styles.light} >
      
         <Switch>
-          <Route path="https://PatilKavya.github.io/ExpenseTrackerP/" exact>
-            <Redirect to="https://PatilKavya.github.io/ExpenseTrackerP/signUp" />
+          <Route path="/ExpenseTrackerP" exact>
+            <Redirect to="/ExpenseTrackerP/signUp" />
           </Route>
-        <Route path="https://PatilKavya.github.io/ExpenseTrackerP/logIn">
+        <Route path="/ExpenseTrackerP/logIn">
             <LogIn />
           </Route>
-         <Route path="https://PatilKavya.github.io/ExpenseTrackerP/signUp">
+         <Route path="/ExpenseTrackerP/signUp">
             <SignUp />
           </Route>
-        { auth&&  <Route path="https://PatilKavya.github.io/ExpenseTrackerP/welcome">
+        { auth&&  <Route path="/ExpenseTrackerP/welcome">
             <Welcome />
           </Route>}
-        { auth&&<Route path="https://PatilKavya.github.io/ExpenseTrackerP/profile">
+        { auth&&<Route path="/ExpenseTrackerP/profile">
             <ProfilePage />
           </Route>}
-        {auth&&<Route path="https://PatilKavya.github.io/ExpenseTrackerP/varify">
+        {auth&&<Route path="/ExpenseTrackerP/varify">
             <Varification />
           </Route>} 
-       {  auth&&  <Route path='https://PatilKavya.github.io/ExpenseTrackerP/password'>
+       {  auth&&  <Route path='/ExpenseTrackerP/password'>
             <Password/>
           </Route>}
-         { auth&& <Route path='https://PatilKavya.github.io/ExpenseTrackerP/expense'>
+         { auth&& <Route path='/ExpenseTrackerP/expense'>
             <Expenses/>
           </Route>}
         </Switch>

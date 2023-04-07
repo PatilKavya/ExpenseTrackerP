@@ -74,7 +74,7 @@ const urlRef=useRef();
             Your Profile is 64% completed. A complete Profile has a higher
             chances of landing a job .
             <Link
-              to="/profile"
+              to="/ExpenseTrackerP/profile"
               style={{ color: "blue", textDecoration: "none" }}
             >
               Complete Now
